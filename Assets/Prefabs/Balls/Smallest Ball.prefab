@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4846747355203950376}
   m_Layer: 0
   m_Name: Smallest Ball
-  m_TagString: Untagged
+  m_TagString: Smallest Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

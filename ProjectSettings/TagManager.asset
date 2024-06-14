@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Rocket
+  - Largest Ball
+  - Large Ball
+  - Medium Ball
+  - Small Ball
+  - Smallest Ball
+  - Rocket Destroyer
   layers:
   - Default
   - TransparentFX

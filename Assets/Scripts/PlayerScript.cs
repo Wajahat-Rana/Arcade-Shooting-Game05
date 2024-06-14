@@ -36,7 +36,7 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        
+        shoot();
     }
       void FixedUpdate()
     {
@@ -48,7 +48,8 @@ public class PlayerScript : MonoBehaviour
         var velocity = Mathf.Abs(myBody.velocity.x);
         float h = Input.GetAxis("Horizontal");
 
-        if(h > 0){
+       if(canWalk){
+         if(h > 0){
             if(velocity < maxVelocity){
             force = speed;
             }
@@ -70,7 +71,30 @@ public class PlayerScript : MonoBehaviour
         else if(h==0){
             anim.SetBool("Walk", false);
         }
+       }
 
         myBody.AddForce(new Vector2(force, 0));
+    }
+
+    IEnumerator playerShoot(){
+        // canWalk = false;
+        anim.Play("Shoot");
+        Vector3 temp = transform.position;
+        temp.y += 1f;
+        AudioSource.PlayClipAtPoint(shootSound, transform.position);
+        Instantiate(rocket, temp, Quaternion.identity);
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("Shoot",false);
+        canWalk = true;
+        yield return new WaitForSeconds(0.3f);
+        canShoot = true;
+
+    }
+    void shoot(){
+        if(Input.GetMouseButtonDown(0)){
+        if(canShoot){
+            StartCoroutine(playerShoot());
+        }
+        }
     }
 }
