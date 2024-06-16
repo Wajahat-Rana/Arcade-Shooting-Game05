@@ -11,6 +11,7 @@ TagManager:
   - Small Ball
   - Smallest Ball
   - Rocket Destroyer
+  - Ground
   layers:
   - Default
   - TransparentFX

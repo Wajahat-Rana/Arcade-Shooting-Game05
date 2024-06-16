@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8280126746819331380}
   - component: {fileID: 5510416814566058567}
   - component: {fileID: 651576511009693778}
+  - component: {fileID: 1386690628906606949}
   m_Layer: 0
   m_Name: Large Ball
   m_TagString: Large Ball
@@ -115,7 +116,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -148,3 +149,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1386690628906606949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418543113061154155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21bd8c2a40aa634f98d2974e93d8ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

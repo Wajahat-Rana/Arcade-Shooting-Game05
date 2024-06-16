@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5118641960640420927}
   - component: {fileID: 8388327194485044060}
   - component: {fileID: 5768211597744153529}
+  - component: {fileID: -3320477043270868221}
   m_Layer: 0
   m_Name: Small Ball
   m_TagString: Small Ball
@@ -115,7 +116,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -148,3 +149,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3320477043270868221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478954378452999694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21bd8c2a40aa634f98d2974e93d8ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
