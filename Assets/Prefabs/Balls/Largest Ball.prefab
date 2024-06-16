@@ -161,3 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21bd8c2a40aa634f98d2974e93d8ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveLeft: 0
+  moveRight: 0
+  nextBall: {fileID: 7418543113061154155, guid: 518c058241af43745a2b1b247aa5621b, type: 3}

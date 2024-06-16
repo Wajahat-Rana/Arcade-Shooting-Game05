@@ -10,6 +10,14 @@ public class BallScript : MonoBehaviour
     [SerializeField]
     private bool moveLeft,moveRight;
 
+    [SerializeField]
+    private GameObject nextBall;
+
+    private GameObject ball1, ball2;
+
+
+    private BallScript ball1Script, ball2Script;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -57,21 +65,64 @@ public class BallScript : MonoBehaviour
 
         }
     }
+
+    void instantiateBalls(){
+        if(gameObject.tag != "Smallest ball"){
+        ball1 = Instantiate(nextBall);
+        ball2 = Instantiate(nextBall);
+
+        ball1.name = nextBall.name;
+        ball2.name = nextBall.name;
+
+        ball1Script = ball1.GetComponent<BallScript>();
+
+        ball2Script = ball2.GetComponent<BallScript>();
+        }
+
+    }
+    void instantiateNextBallAndDestroyExisting(){
+        instantiateBalls();
+
+        Vector3 temp = transform.position;
+
+        ball1.transform.position = temp;
+        ball1Script.SetMoveLeft(true);
+        ball2.transform.position = temp;
+        ball2Script.SetMoveRight(true);
+
+        ball1.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2.5f);
+        ball2.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2.5f);
+        gameObject.SetActive(false);
+    }
+    void SetMoveLeft(bool canMoveLeft){
+        this.moveLeft = canMoveLeft;
+        this.moveRight = !canMoveLeft;
+    }
+    
+    void SetMoveRight(bool canMoveRight){
+        this.moveRight = canMoveRight;
+        this.moveLeft = !canMoveRight;
+    }
      void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Ground"){
             myBody.velocity = new Vector2(0,forceY);
         }
-        string[] objectName = other.tag.Split();
-        if(objectName.Length>=1){
-        if(objectName[0] == "Left"){
-            moveLeft = false;
-            moveRight = true;
+        if(other.tag == "Left Wall"){
+            SetMoveRight(true);
         }
-        if(objectName[0] == "Right"){
-            moveLeft = true;
-            moveRight = false;
+        
+        if(other.tag == "Right Wall"){
+            SetMoveLeft(true);
         }
+        
+        if(other.tag == "Rocket"){
+            if(gameObject.tag != "Smallest Ball"){
+            instantiateNextBallAndDestroyExisting();
+            }
+            else{
+                gameObject.SetActive(false);
+            }
         }
     }
 }
