@@ -26,5 +26,11 @@ public class RocketScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        string[] objectName = other.tag.Split();
+        if(objectName.Length > 1){
+        if(objectName[1] == "Ball"){
+            Destroy(gameObject);
+        }
+        }
     }
 }

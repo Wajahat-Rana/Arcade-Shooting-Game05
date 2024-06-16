@@ -7,6 +7,9 @@ public class BallScript : MonoBehaviour
     private float forceX, forceY;
     private Rigidbody2D myBody;
 
+    [SerializeField]
+    private bool moveLeft,moveRight;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,7 +20,7 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        moveBall();
     }
 
     void setBallSpeed(){
@@ -41,10 +44,34 @@ public class BallScript : MonoBehaviour
             break;
         }
     }
+    void moveBall(){
+        if(moveLeft){
+            Vector3 temp = transform.position;
+            temp.x -= forceX*Time.deltaTime;
+            transform.position = temp;
+        }
+        if(moveRight){
+            Vector3 temp = transform.position;
+            temp.x += forceX*Time.deltaTime;;
+            transform.position = temp;
+
+        }
+    }
      void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Ground"){
             myBody.velocity = new Vector2(0,forceY);
+        }
+        string[] objectName = other.tag.Split();
+        if(objectName.Length>=1){
+        if(objectName[0] == "Left"){
+            moveLeft = false;
+            moveRight = true;
+        }
+        if(objectName[0] == "Right"){
+            moveLeft = true;
+            moveRight = false;
+        }
         }
     }
 }
