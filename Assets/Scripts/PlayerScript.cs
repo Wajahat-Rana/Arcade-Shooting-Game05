@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerScript : MonoBehaviour
 {
@@ -93,8 +95,27 @@ public class PlayerScript : MonoBehaviour
     void shoot(){
         if(Input.GetMouseButtonDown(0)){
         if(canShoot){
+            canShoot = false;
             StartCoroutine(playerShoot());
         }
+        }
+    }
+
+    IEnumerator KillPlayerAndRestartGame(){
+        transform.position = new Vector3(200,200,0);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex);
+    }
+
+     void OnTriggerEnter2D(Collider2D other)
+    {
+        string[] ballName = other.tag.Split();
+        if(ballName.Length > 1)
+        {
+            if(ballName[1] == "Ball")
+            {
+                StartCoroutine(KillPlayerAndRestartGame());
+            }
         }
     }
 }
